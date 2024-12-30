@@ -1,4 +1,4 @@
-// script.js - Top-Down Shooter Game (9:16 Aspect Ratio)
+// script.js - Top-Down Shooter Game (9:16 Aspect Ratio) with Scoring System
 
 /* Set canvas dimensions for 9:16 aspect ratio */
 const canvas = document.getElementById('gameCanvas');
@@ -31,6 +31,9 @@ const bulletHeight = 10;
 const enemies = [];
 const enemyWidth = 30;
 const enemyHeight = 30;
+
+// Score settings
+let score = 0;
 
 // Handle player movement
 document.addEventListener('keydown', (e) => {
@@ -116,6 +119,9 @@ function drawEnemies() {
                 bullet.y < enemy.y + enemy.height &&
                 bullet.y + bullet.height > enemy.y
             ) {
+                // Increase score when enemy is destroyed
+                score += 10;
+
                 // Remove enemy and bullet
                 enemies.splice(index, 1);
                 bullets.splice(bulletIndex, 1);
@@ -127,6 +133,13 @@ function drawEnemies() {
             enemies.splice(index, 1);
         }
     });
+}
+
+// Draw the score
+function drawScore() {
+    ctx.fillStyle = 'white';
+    ctx.font = '20px Arial';
+    ctx.fillText(`Score: ${score}`, 10, 30);
 }
 
 // Update game state
@@ -146,6 +159,7 @@ function update() {
     drawPlayer();
     drawBullets();
     drawEnemies();
+    drawScore();  // Draw the score
 
     // Create new enemy at random interval
     if (Math.random() < 0.02) {
