@@ -1,0 +1,30 @@
+/* styles.css - Styling for Top-Down Shooter Game */
+
+/* Set body margin and background */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;  /* Black background for a retro game feel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Canvas style */
+canvas {
+    border: 2px solid #fff;  /* White border around the canvas */
+    background-color: #222;   /* Dark background for the game area */
+}
+
+/* Optional: Add some basic styles for the game interface (score, etc.) */
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+}
+
